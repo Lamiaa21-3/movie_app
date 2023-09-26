@@ -1,13 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/provider/popular_provider.dart';
+import 'package:movie_app/provider/upcoming_provider.dart';
 import 'package:movie_app/screens/home_page.dart';
 import 'package:provider/provider.dart';
 
 void main() {
-  runApp((ChangeNotifierProvider(
+  runApp(  MultiProvider(
+    providers :[
+
+      ChangeNotifierProvider(
       create: (context) {
         return PopularProvider();
-      }, child: const MyApp())));
+      },
+  ),
+
+  ChangeNotifierProvider(
+  create: (context) {
+  return UpcomingProvider();
+  },
+  )
+
+  ],
+  child: const MyApp(),
+  ),
+  );
       }
 
 class MyApp extends StatelessWidget {

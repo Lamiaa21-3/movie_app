@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/popular_model.dart';
+import 'package:movie_app/provider/upcoming_provider.dart';
 import 'package:movie_app/screens/Top%20rated.dart';
 import 'package:movie_app/screens/Upcoming.dart';
 import 'package:movie_app/screens/popular.dart';
@@ -20,12 +21,18 @@ class _HomePageState extends State<HomePage> {
 @override
   void didChangeDependencies() {
     store();
+
     super.didChangeDependencies();
   }
   void store ()
   {
     Provider.of<PopularProvider>(context).weatherData();
+
   }
+  // void upStore ()
+  // {
+  //   Provider.of<UpcomingProvider>(context).upComingMethod();
+  // }
  List screens =[
    PopularScreen(),
    UpcomingScreen(),
@@ -81,9 +88,20 @@ class _HomePageState extends State<HomePage> {
         currentIndex: _selectedIndex,
         selectedItemColor: Colors.teal,
         onTap:(index) async{
+if(_selectedIndex==0) {
+            Provider.of<PopularProvider>(context, listen: false).weatherData();
+          }
+else if (_selectedIndex==1){
+            Provider.of<UpcomingProvider>(context).upComingMethod();
+}
+else
 
-         Provider.of<PopularProvider>(context, listen: false).weatherData();
-
+  {
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => const TopRatedScreens()),
+    );
+  }
 
           setState(()  {
             _selectedIndex = index;
