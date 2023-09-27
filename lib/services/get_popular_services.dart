@@ -19,6 +19,7 @@ class PopularServices {
    // print(data['results'][0]['original_language']);
 
     popularModel = PopularModel.fromJson(data);
+    //print('lllllllllllllllll$data');
 //print(popularModel.page);
     return popularModel;
   }

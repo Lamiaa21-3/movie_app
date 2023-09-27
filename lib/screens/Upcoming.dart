@@ -22,25 +22,38 @@ class UpcomingScreen extends StatelessWidget {
       return Expanded(
           child: Consumer<UpcomingProvider>(
               builder: (_, value, __) => ListView.separated(
-                  itemCount: 20,
+                  itemCount: value.upComingData!.uresults.length,
                   itemBuilder: (context, index) {
                     return Padding(
                       padding: const EdgeInsets.all(20),
                       child: Row(
                         children: [
-                          //Image.asset('${value.upComingData?.uresults[index].uimage}',width: 100,height: 100,),
+                          Image.network('${value.upComingData?.uresults[index].uimage}',width: 100,height: 100,),
                           SizedBox(
                             width: 20,
                           ),
                           Column(
                             children: [
-                              Text(
-                                '${value.upComingData?.uresults[index].utitle}',
-                                style: TextStyle(color: Colors.white),
+                              SizedBox(
+                                width: 50,
+                                child: Text(
+                                  '${value.upComingData?.uresults[index].utitle}',
+
+
+                                  style: TextStyle(color: Colors.white,overflow: TextOverflow.fade,),
+                                ),
                               ),
-                              Text(
-                                '${value.upComingData?.uresults[index].urelease_date}',
-                                style: TextStyle(color: Colors.white),
+                              SizedBox(
+                                width: 50,
+                                child: Text(
+                                  '${value.upComingData?.uresults[index].urelease_date}',
+
+                                  maxLines: 2,
+
+                                  style: TextStyle(color: Colors.white,overflow: TextOverflow.ellipsis, ),
+
+
+                                ),
                               ),
                               // Text(
                               //   '${provider.popularData?.result[index].vote_count}',

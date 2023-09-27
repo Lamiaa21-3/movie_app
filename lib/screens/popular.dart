@@ -37,6 +37,9 @@ class _PopularScreenState extends State<PopularScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final deviceSize = MediaQuery
+        .of(context)
+        .size;
     if(Provider.of<PopularProvider>(context).popularData != null) {
      return Expanded(
           child: Consumer<PopularProvider>(
@@ -47,15 +50,19 @@ class _PopularScreenState extends State<PopularScreen> {
                       padding: const EdgeInsets.all(20),
                       child: Row(
                         children: [
-                          //Image.asset('${provider.popularData?.result[index].image}',width: 100,height: 100,),
+                          Image.network('${provider.popularData?.result[index].image}',width: 100,height: 100,),
                           SizedBox(
                             width: 20,
                           ),
                           Column(
                             children: [
-                              Text(
-                                '${provider.popularData?.result[index].title}',
-                                style: TextStyle(color: Colors.white),
+                              SizedBox(
+                                width: 50,
+                                child: Text(
+                                  '${provider.popularData?.result[index].title}',
+
+                                  style: TextStyle(color: Colors.white,overflow: TextOverflow.fade,),
+                                ),
                               ),
                               Text(
                                 '${provider.popularData?.result[index].release_date}',

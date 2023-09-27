@@ -20,8 +20,9 @@ class Data {
    String ?release_date;
    int ?vote_count;
 
+
    Data.fromJson(Map<String, dynamic> jsonData){
-     image= jsonData['poster_path'];
+     image= 'https://image.tmdb.org/t/p/w500${jsonData['poster_path']}';
      title= jsonData['title'];
      release_date= jsonData['release_date'];
      vote_count= jsonData['vote_count'];

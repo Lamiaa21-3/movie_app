@@ -12,7 +12,7 @@ class UpcomingServices {
    Map<String,dynamic> updata = jsonDecode(response.body);
   // print(updata);
       UpComingModel  upComingModel =UpComingModel.fromJson(updata);
-    //print(updata['results'][0]['original_language']);
+    print(updata['results'][0]['overview']);
    return upComingModel ;
 }
 }

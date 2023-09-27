@@ -20,7 +20,7 @@ class TopData {
   TopData.fromJson(jsonData)
   {
     topTitle = jsonData['title'];
-    topImage = jsonData['poster_path'];
+    topImage = 'https://image.tmdb.org/t/p/w500${jsonData['poster_path']}';
     topPopularity = jsonData['vote_count'];
   }
 }

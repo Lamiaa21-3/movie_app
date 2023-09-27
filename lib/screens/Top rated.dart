@@ -23,15 +23,15 @@ class TopRatedScreens extends StatelessWidget {
           child: Consumer<TopRatedProvider>(
               builder: (_, val, __) =>
                   ListView.separated(
-                      itemCount: 12,
+                      itemCount: val.topRatedModel!.topResult.length,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(20),
                           child: Row(
                             children: [
-                              // Image.asset('${val.topRatedModel?.topResult[index].topImage}'),
+                               Image.network('${val.topRatedModel?.topResult[index].topImage}'),
                               SizedBox(
-                                width: 20,
+                                width:10,
                               ),
                               Column(
                                 children: [

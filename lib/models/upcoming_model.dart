@@ -13,8 +13,8 @@ class UpData{
   String?urelease_date;
   UpData.fromJson(Map<String,dynamic>jsonData)
   {
-    uimage = jsonData['poster_path'];
-    utitle=jsonData['title'];
-    urelease_date=jsonData['release_date'];
+    uimage = 'https://image.tmdb.org/t/p/w500${jsonData['poster_path']}';
+    utitle=jsonData['original_title'];
+    urelease_date=jsonData['overview'];
   }
 }

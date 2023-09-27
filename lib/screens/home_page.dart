@@ -43,6 +43,9 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final deviceSize = MediaQuery
+        .of(context)
+        .size;
     PopularModel? popularData;
     popularData = Provider.of<PopularProvider>(context).popularData;
     return Scaffold(
