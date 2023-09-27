@@ -37,51 +37,50 @@ class _PopularScreenState extends State<PopularScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-        child: Consumer<PopularProvider>(
-            builder: (_, provider, __) =>
-        ListView.separated(
-            itemCount: provider.popularData!.result.length,
-            itemBuilder: (context, index) {
-              return Padding(
-                padding: const EdgeInsets.all(20),
-                child: Row(
-                  children: [
-                  Image.asset('${provider.popularData?.result[index].image}'),
-                    SizedBox(
-                      width: 20,
-                    ),
-                    Column(
+    if(Provider.of<PopularProvider>(context).popularData != null) {
+     return Expanded(
+          child: Consumer<PopularProvider>(
+              builder: (_, provider, __) => ListView.separated(
+                  itemCount: provider.popularData!.result.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.all(20),
+                      child: Row(
                         children: [
-                          Text(
-                            '${provider.popularData?.result[index].title}',
-                            style: TextStyle(color: Colors.white),
+                          //Image.asset('${provider.popularData?.result[index].image}',width: 100,height: 100,),
+                          SizedBox(
+                            width: 20,
                           ),
-                          Text(
-                            '${provider.popularData?.result[index].release_date}',
-                            style: TextStyle(color: Colors.white),
-                          ),
-                          Text(
-                            '${provider.popularData?.result[index].vote_count}',
-                            style: TextStyle(color: Colors.white),
+                          Column(
+                            children: [
+                              Text(
+                                '${provider.popularData?.result[index].title}',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              Text(
+                                '${provider.popularData?.result[index].release_date}',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              Text(
+                                '${provider.popularData?.result[index].vote_count}',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                            ],
                           ),
                         ],
                       ),
-
-                  ],
-                ),
-              );
-            },
-            separatorBuilder: (BuildContext context, int index) {
-              return Container(
-                width: double.infinity,
-                height: 1,
-                color: Colors.grey,
-              );
-                    }
-
-    )
-    )
-    );
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) {
+                    return Container(
+                      width: double.infinity,
+                      height: 1,
+                      color: Colors.grey,
+                    );
+                  })));
+    }
+    else {
+      return CircularProgressIndicator();
+    }
   }
 }

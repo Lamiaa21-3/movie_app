@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/models/popular_model.dart';
+import 'package:movie_app/provider/topRated_provider.dart';
 import 'package:movie_app/provider/upcoming_provider.dart';
 import 'package:movie_app/screens/Top%20rated.dart';
 import 'package:movie_app/screens/Upcoming.dart';
@@ -49,18 +50,22 @@ class _HomePageState extends State<HomePage> {
         elevation: 0,
         title: Text("What to you want to watch ? "),
       ),
-      body: Column(
+      body:
+      Column(
         children: [
           Padding(
             padding: const EdgeInsets.all(15.0),
             child: TextField(
+
               decoration: InputDecoration(
                 suffixIcon: Icon(Icons.search),
                 labelText: 'Search',
                 hintText: 'enter your want',
+
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
+
               ),
             ),
           ),
@@ -90,11 +95,8 @@ class _HomePageState extends State<HomePage> {
           } else if (_selectedIndex == 1) {
             Provider.of<UpcomingProvider>(context, listen: false)
                 .upComingMethod();
-          } else {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const TopRatedScreens()),
-            );
+          } else if(_selectedIndex ==2) {
+            Provider.of<TopRatedProvider>(context,listen: false).topRatedMethod();
           }
 
           setState(() {

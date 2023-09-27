@@ -10,9 +10,9 @@ class UpcomingServices {
     Uri url = Uri.parse('$baseUrl/upcoming?api_key=$apiKey');
    http.Response response = await  http.get(url);
    Map<String,dynamic> updata = jsonDecode(response.body);
-   print(updata);
+  // print(updata);
       UpComingModel  upComingModel =UpComingModel.fromJson(updata);
-    print(updata['results'][0]['original_language']);
+    //print(updata['results'][0]['original_language']);
    return upComingModel ;
 }
 }

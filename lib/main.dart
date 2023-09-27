@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:movie_app/provider/popular_provider.dart';
+import 'package:movie_app/provider/topRated_provider.dart';
 import 'package:movie_app/provider/upcoming_provider.dart';
 import 'package:movie_app/screens/home_page.dart';
 import 'package:provider/provider.dart';
@@ -18,7 +19,12 @@ void main() {
   create: (context) {
   return UpcomingProvider();
   },
-  )
+  ),
+      ChangeNotifierProvider(
+        create: (context) {
+          return TopRatedProvider();
+        },
+      ),
 
   ],
   child: const MyApp(),
